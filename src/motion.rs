@@ -12,8 +12,8 @@ pub struct Velocity(pub f32);
 pub struct Angle(pub f32);
 
 impl Angle {
-    pub fn from_grad(grad: usize) -> Self {
-        Angle((grad as f32) * 2.0 * PI / 360.0)
+    pub fn from_grad(grad: f32) -> Self {
+        Angle(grad * 2.0 * PI / 360.0)
     }
 }
 

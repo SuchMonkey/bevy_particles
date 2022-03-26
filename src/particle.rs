@@ -61,7 +61,7 @@ fn input_handler(
     mut rng: ResMut<WyRand>,
     time: Res<Time>,
 ) {
-    let hue = ((time.seconds_since_startup() * 50.0) % 360.0) as f32;
+    let hue = ((time.seconds_since_startup() * 100.0) % 360.0) as f32;
 
     let (camera, camera_transform) = q_camera.single();
 
@@ -77,7 +77,7 @@ fn input_handler(
                     rng.generate_range(10..=50) as f32,
                     cursor_pos,
                     Velocity(rng.generate_range(150..=250) as f32),
-                    Angle::from_grad(rng.generate_range(0..360)),
+                    Angle::from_grad(rng.generate_range(0..360) as f32),
                     hue,
                 );
             });
@@ -85,13 +85,16 @@ fn input_handler(
     }
     if buttons.pressed(MouseButton::Left) {
         if let Some(cursor_pos) = cusor_world_pos {
-            (0..2).for_each(|_| {
+            (0..5).for_each(|i| {
+                let part = 1 + i % 4;
+                let part = 3 * hue as i32 + part * 90;
+
                 Particle::spawn(
                     &mut commands,
                     rng.generate_range(10..=40) as f32,
                     cursor_pos,
                     Velocity(rng.generate_range(150..=250) as f32),
-                    Angle::from_grad(rng.generate_range(0..360)),
+                    Angle::from_grad(rng.generate_range(part - 5..part + 5) as f32),
                     hue,
                 );
             });
