@@ -1,0 +1,15 @@
+[package]
+name = "particles"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# bevy = { git = "https://github.com/bevyengine/bevy", rev = "28ba87e6c8f48a6b41b6743b748a72d41728523c", features = [
+#     "dynamic",
+# ] }
+# bevy_prototype_lyon = { git = "https://github.com/Nilirad/bevy_prototype_lyon", rev = "9d6839a1387af2dabebc2d065a049b7bbd8ee8b3" }
+
+bevy = { version = "0.6.1", features = ["dynamic"] }
+bevy_prototype_lyon = "0.4.0"
+nanorand = "0.7.0"
